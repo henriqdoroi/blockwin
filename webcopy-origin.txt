@@ -1,44 +1,44 @@
-Uri: https://blockwin.site/
-File Name: C:\Downloaded Web Sites\blockwin.site\index.htm
-Content Type: text/html
-
 Uri: https://blockwin.site/apple-touch-icon-180x180.png
-File Name: C:\Downloaded Web Sites\blockwin.site\apple-touch-icon-180x180.png
+File Name: C:\Downloaded Web Sites\blockwin.site\apple-touch-icon-180x180-1.png
 Content Type: image/png
 
 Uri: https://blockwin.site/apple-touch-icon.png
-File Name: C:\Downloaded Web Sites\blockwin.site\apple-touch-icon.png
+File Name: C:\Downloaded Web Sites\blockwin.site\apple-touch-icon-1.png
 Content Type: image/png
 
 Uri: https://blockwin.site/assets/index-BG5atbmi.css
-File Name: C:\Downloaded Web Sites\blockwin.site\assets\index-BG5atbmi.css
+File Name: C:\Downloaded Web Sites\blockwin.site\assets\index-BG5atbmi-1.css
 Content Type: text/css
 
 Uri: https://blockwin.site/assets/index-DkNC8JTO.js
-File Name: C:\Downloaded Web Sites\blockwin.site\assets\index-DkNC8JTO.js
+File Name: C:\Downloaded Web Sites\blockwin.site\assets\index-DkNC8JTO-1.js
 Content Type: text/javascript
 
 Uri: https://blockwin.site/assets/rolldown-runtime-Bh1tDfsg.js
-File Name: C:\Downloaded Web Sites\blockwin.site\assets\rolldown-runtime-Bh1tDfsg.js
+File Name: C:\Downloaded Web Sites\blockwin.site\assets\rolldown-runtime-Bh1tDfsg-1.js
 Content Type: text/javascript
 
 Uri: https://blockwin.site/assets/vendor-CM6qdn1s.js
-File Name: C:\Downloaded Web Sites\blockwin.site\assets\vendor-CM6qdn1s.js
+File Name: C:\Downloaded Web Sites\blockwin.site\assets\vendor-CM6qdn1s-1.js
 Content Type: text/javascript
 
 Uri: https://blockwin.site/favicon.png
-File Name: C:\Downloaded Web Sites\blockwin.site\favicon.png
-Content Type: image/png
-
-Uri: https://blockwin.site/images/all/backgorund-painel1.png
-File Name: C:\Downloaded Web Sites\blockwin.site\images\all\backgorund-painel1.png
+File Name: C:\Downloaded Web Sites\blockwin.site\favicon-1.png
 Content Type: image/png
 
 Uri: https://blockwin.site/manifest.json
-File Name: C:\Downloaded Web Sites\blockwin.site\manifest.json
+File Name: C:\Downloaded Web Sites\blockwin.site\manifest-1.json
 Content Type: application/json
 
+Uri: https://blockwin.site/painel
+File Name: C:\Downloaded Web Sites\blockwin.site\painel.html
+Content Type: text/html
+
 Uri: https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496
+File Name: C:\Downloaded Web Sites\blockwin.site\beacon.min.js\v4513226cdae34746b4dedf0b4dfa099e1781791509496-1
+Content Type: text/javascript
+
+6
 File Name: C:\Downloaded Web Sites\blockwin.site\beacon.min.js\v4513226cdae34746b4dedf0b4dfa099e1781791509496
 Content Type: text/javascript
 
