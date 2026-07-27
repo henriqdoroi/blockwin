@@ -492,3 +492,15 @@ Pendências reais e bloqueantes:
 
 Nenhuma migration, endpoint, componente ou funcionalidade foi criada nesta etapa,
 em conformidade com a ordem solicitada.
+
+## 17. Adendo — referências recebidas após a Etapa 1
+
+Após a conclusão da análise inicial, foram fornecidas sete capturas de tela no
+pedido de implementação. Elas mostram: lobby central, sheet de depósito, sheet de
+saque, sheet alto de indicação em duas posições de rolagem e perfil fechado/aberto
+nos acordeões. A implementação visual subsequente adotou a composição responsiva,
+hierarquia, densidade, navegação fixa, backdrop desfocado e comportamento de sheets
+dessas referências, mas criou marca, textos, ilustrações em CSS e cores próprias.
+
+Como as capturas foram anexadas à conversa e não adicionadas ao checkout, elas não
+se tornaram arquivos versionados em `references/player-panel/`.
