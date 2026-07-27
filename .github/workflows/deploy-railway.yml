@@ -1,0 +1,36 @@
+name: Deploy Railway
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+concurrency:
+  group: railway-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate JavaScript
+        run: npm run check
+      - name: Install Railway CLI
+        run: npm install --global @railway/cli
+      - name: Deploy application
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          RAILWAY_PROJECT_ID: ${{ vars.RAILWAY_PROJECT_ID }}
+          RAILWAY_SERVICE_ID: ${{ vars.RAILWAY_SERVICE_ID }}
+          RAILWAY_ENVIRONMENT_ID: ${{ vars.RAILWAY_ENVIRONMENT_ID }}
+          APP_URL: ${{ vars.APP_URL }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          PIX_ENCRYPTION_KEY: ${{ secrets.PIX_ENCRYPTION_KEY }}
+        run: ./scripts/railway-deploy.sh

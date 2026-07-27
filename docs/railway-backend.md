@@ -92,3 +92,30 @@ webhook assinado, conciliação, KYC/AML, revisão jurídica e auditoria indepen
 O backend apenas reserva a entrada do jogo: validação completa do replay,
 movimentos, encerramento e liquidação ainda precisam ser implementadas antes de o
 jogo distribuir qualquer recompensa.
+
+## Conexão automatizada deste repositório
+
+O workflow `.github/workflows/deploy-railway.yml` conecta e publica o serviço sem
+armazenar credenciais no Git. No GitHub, configure o environment `production` com:
+
+**Secrets:**
+
+- `RAILWAY_TOKEN` — token de projeto/conta com acesso ao serviço;
+- `JWT_SECRET` — segredo aleatório com 32 ou mais caracteres;
+- `PIX_ENCRYPTION_KEY` — outro segredo aleatório, também com 32 ou mais caracteres.
+
+**Variables:**
+
+- `RAILWAY_PROJECT_ID`;
+- `RAILWAY_SERVICE_ID`;
+- `RAILWAY_ENVIRONMENT_ID`;
+- `APP_URL` — domínio HTTPS final da aplicação.
+
+Depois disso, execute **Deploy Railway** em *Actions* ou faça push na branch `main`.
+O script valida todas as entradas antes de chamar `railway link`, configura somente
+variáveis seguras de produção e executa `railway up --detach`.
+
+A conexão não pode ser realizada apenas com o código do repositório: a Railway exige
+um token e os identificadores do projeto, serviço e ambiente. Esses valores não
+estavam disponíveis no ambiente usado para preparar esta alteração e não devem ser
+publicados em commits ou mensagens de PR.
