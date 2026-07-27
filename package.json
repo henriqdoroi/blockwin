@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "start": "node server/src/index.js",
     "migrate": "node server/src/migrate.js",
-    "check": "node --check server/src/index.js && node --check server/src/migrate.js && node --check assets/player-panel.js"
+    "check": "node --check server/src/index.js && node --check server/src/migrate.js && node --check assets/player-panel.js && node --check server/src/auth-contract.js",
+    "test": "node --test"
   },
   "dependencies": {
     "@fastify/cookie": "^11.0.2",

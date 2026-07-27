@@ -119,3 +119,47 @@ A conexão não pode ser realizada apenas com o código do repositório: a Railw
 um token e os identificadores do projeto, serviço e ambiente. Esses valores não
 estavam disponíveis no ambiente usado para preparar esta alteração e não devem ser
 publicados em commits ou mensagens de PR.
+
+## Diagnóstico de cadastro e login
+
+A mensagem **“Erro de comunicação com o servidor”** da SPA significa que
+`POST /api/auth/register` ou `POST /api/auth/login` recebeu uma resposta que não era
+JSON — normalmente um `404` HTML do hosting estático. O frontend usa URLs relativas;
+portanto `https://SEU-DOMINIO/api/*` precisa chegar ao mesmo serviço Fastify que
+serve `/`, `/cadastro`, `/login` e `/painel`.
+
+Depois do deploy, valide nesta ordem:
+
+```bash
+curl --fail --show-error https://SEU-DOMINIO/api/health
+curl --fail --show-error https://SEU-DOMINIO/cadastro -o /dev/null
+curl --fail --show-error https://SEU-DOMINIO/login -o /dev/null
+curl --fail --show-error https://SEU-DOMINIO/painel -o /dev/null
+```
+
+`/api/health` deve responder JSON contendo `service: "bloco-play-api"`. Se retornar
+HTML, o domínio ainda aponta para o hosting antigo e não para a aplicação Railway.
+Nesse caso, associe o domínio ao serviço Railway ou configure no proxy/CDN a regra
+`/api/* -> Railway`, sem remover cookies e sem reescrever o método HTTP.
+
+Teste de cadastro sandbox (use dados descartáveis e uma senha própria):
+
+```bash
+curl --fail-with-body -c cookies.txt \
+  -H 'Content-Type: application/json' \
+  -H 'X-Requested-With: XMLHttpRequest' \
+  -d '{"name":"Usuário Teste","phone":"11999999999","password":"senha-segura"}' \
+  https://SEU-DOMINIO/api/auth/register
+```
+
+O contrato aceita exatamente `name`, `phone`, `password` e `ref`, que são os campos
+enviados pelo bundle existente. Telefones formatados ou somente com dígitos são
+normalizados no backend. Cadastro duplicado retorna JSON com código
+`ACCOUNT_ALREADY_EXISTS`; indisponibilidade do PostgreSQL retorna
+`DATABASE_UNAVAILABLE`, em vez de HTML ou erro genérico.
+
+Em produção, `APP_URL` deve ser somente a origem pública, por exemplo
+`https://jogo.example`, sem caminho. Barra final é normalizada pelo servidor. O
+PostgreSQL precisa estar ligado ao serviço pela variável
+`DATABASE_URL=${{Postgres.DATABASE_URL}}`, e o healthcheck não fica verde enquanto o
+banco não responder.
