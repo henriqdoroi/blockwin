@@ -1,26 +1,71 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#0b0e1a">
-    <meta name="description" content="Block Blast — monte blocos, limpe linhas e ganhe dinheiro real via PIX.">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="Block Win">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-1.png">
-    <link rel="apple-touch-icon" href="apple-touch-icon-1.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180-1.png">
-    <link rel="manifest" href="manifest-1.json">
-    <title>Block Blast — Monte e Ganhe</title>
-    <script type="module" crossorigin="" src="assets/index-DkNC8JTO-1.js"></script>
-    <link rel="modulepreload" crossorigin="" href="assets/rolldown-runtime-Bh1tDfsg-1.js">
-    <link rel="modulepreload" crossorigin="" href="assets/vendor-CM6qdn1s-1.js">
-    <link rel="stylesheet" crossorigin="" href="assets/index-BG5atbmi-1.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  <script type="module" src="beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496-1" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"323768f8f4364d7a80b252868194671d","r":1}' crossorigin="anonymous"></script>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#07132e">
+  <meta name="description" content="Painel autenticado Bloco Play">
+  <title>Painel | Bloco Play</title>
+  <link rel="stylesheet" href="assets/player-panel.css">
+</head>
+<body>
+  <div id="panel" class="panel" aria-busy="true">
+    <aside id="installBar" class="install-bar" hidden>
+      <button class="icon-button install-close" type="button" aria-label="Fechar aviso de instalação">×</button>
+      <div class="brand-icon" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="install-copy"><strong>Leve o Bloco Play com você</strong><span>Instale para acessar mais rápido.</span></div>
+      <button id="installButton" class="install-button" type="button">Instalar</button>
+    </aside>
+
+    <header class="panel-header">
+      <a class="logo" href="/painel" aria-label="Bloco Play — painel">
+        <span class="logo-blocks" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>BLOCO<em>PLAY</em></span>
+      </a>
+      <div class="account-summary">
+        <div><span>SALDO</span><strong id="headerBalance">—</strong></div>
+        <button id="avatarButton" class="avatar" type="button" aria-label="Abrir perfil">?</button>
+      </div>
+    </header>
+
+    <main class="panel-main">
+      <section class="lobby-card" aria-labelledby="lobbyTitle">
+        <div class="game-banner">
+          <div class="banner-sparks" aria-hidden="true"></div>
+          <div><small>DESAFIO DOS BLOCOS</small><h1 id="lobbyTitle">ENCAIXE, COMBINE<br><span>E SUPERE A META</span></h1><p>Estratégia em cada jogada.</p></div>
+          <div class="banner-art" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <span id="onlineCount" class="online-count" hidden><b></b><span></span> online</span>
+        </div>
+        <div class="lobby-content">
+          <p class="eyebrow">VALOR DE ENTRADA</p>
+          <div id="tierButtons" class="tier-grid" role="group" aria-label="Valores de entrada"></div>
+          <label class="money-field" for="customEntry"><span>R$</span><input id="customEntry" inputmode="decimal" autocomplete="off" aria-describedby="entryHelp"><small id="entryHelp" class="sr-only">Informe um valor entre o mínimo e o máximo permitidos</small></label>
+          <div class="reward-card"><span id="rewardLabel">Recompensa mínima</span><strong id="rewardValue">—</strong></div>
+          <button id="playButton" class="primary-button" type="button" disabled>Carregando...</button>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Ações do painel">
+      <div class="nav-inner">
+        <button data-sheet="deposit" type="button" aria-label="Depositar"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="3"/><path d="M3 10h18M16 15h2"/></svg><span>Depositar</span></button>
+        <button data-sheet="withdraw" type="button" aria-label="Sacar"><svg viewBox="0 0 24 24"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg><span>Sacar</span></button>
+        <button id="homeAction" class="play-nav active" type="button" aria-label="Jogar"><span class="play-orb"><i></i><i></i><i></i><i></i></span><span>Jogar</span></button>
+        <button data-sheet="referral" type="button" aria-label="Indicar"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2"/><path d="M3 20c0-4 2-6 6-6s6 2 6 6m1-5c3 0 5 2 5 5"/></svg><span>Indicar</span></button>
+        <button data-sheet="profile" type="button" aria-label="Perfil"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-5 3-7 8-7s8 2 8 7"/></svg><span>Perfil</span></button>
+      </div>
+    </nav>
+  </div>
+
+  <div id="sheetRoot" class="sheet-root" hidden>
+    <div class="sheet-backdrop" data-close-sheet></div>
+    <section id="sheet" class="bottom-sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" tabindex="-1">
+      <div class="sheet-handle" aria-hidden="true"></div>
+      <button class="sheet-close" type="button" data-close-sheet aria-label="Fechar">×</button>
+      <div id="sheetContent" class="sheet-content"></div>
+    </section>
+  </div>
+  <div id="toastRegion" class="toast-region" role="status" aria-live="polite"></div>
+  <script src="assets/player-panel.js" defer></script>
 </body>
 </html>
