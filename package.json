@@ -1,0 +1,24 @@
+{
+  "name": "bloco-play-platform",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node server/src/index.js",
+    "migrate": "node server/src/migrate.js",
+    "check": "node --check server/src/index.js && node --check server/src/migrate.js && node --check assets/player-panel.js"
+  },
+  "dependencies": {
+    "@fastify/cookie": "^11.0.2",
+    "@fastify/cors": "^11.1.0",
+    "@fastify/helmet": "^13.0.1",
+    "@fastify/rate-limit": "^10.3.0",
+    "@fastify/static": "^8.3.0",
+    "argon2": "^0.44.0",
+    "fastify": "^5.4.0",
+    "jose": "^6.0.12",
+    "pg": "^8.16.3",
+    "zod": "^4.0.10"
+  }
+}
